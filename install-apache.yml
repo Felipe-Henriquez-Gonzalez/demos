@@ -9,7 +9,7 @@
         state: latest
 
     - name: httpd service enabled
-      ansible.biultin.service:
+      ansible.builtin.service:
         name: httpd
         enabled: true
         state: started

@@ -1,0 +1,17 @@
+---
+- name: setup apache
+  hosts: all
+  become: true
+  tasks:
+    - name: httpd installed
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
+
+    - name: httpd service enabled
+      ansible.biultin.service:
+        name: httpd
+        enabled: true
+        state: started
+
+        

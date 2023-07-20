@@ -7,10 +7,10 @@
         url: https://srvpampvwadr.bcch.local/PasswordVault/API/auth/CyberArk/logon
         method: POST
         body_format: form-urlencoded
+          Content-Type: application/json
+        return_content: true
         name: username
         password: password
-        Content-Type: application/json
-        return_content: true
       register: token
     - name: mostrar token
       debug:

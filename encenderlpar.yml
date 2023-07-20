@@ -1,6 +1,6 @@
 ---
 - name: activar lpar
-  hosts: 10.82.66.28
+  hosts: localhost
   become: true
 
   tasks:

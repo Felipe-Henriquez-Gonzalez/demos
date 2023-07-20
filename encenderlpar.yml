@@ -1,0 +1,16 @@
+---
+- name: activar lpar
+  hosts: 10.82.66.28
+  become: true
+
+  tasks:
+  - name: Activate an AIX/Linux logical partition with user defined profile_name.
+    ibm.power_hmc.powervm_lpar_instance:
+        hmc_host: '10.82.66.28'
+        hmc_auth:
+           username: 'hscroot'
+           password: 'abc123'
+        system_name: Server-9009-22A-SN787D130
+        vm_name: srvAPPPGDR
+        prof_name: default_profile
+        action: poweron

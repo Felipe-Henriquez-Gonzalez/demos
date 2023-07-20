@@ -1,0 +1,14 @@
+---
+- name: Obtener contenido de un archivo
+  hosts: localhost
+  tasks:
+    - name: obtener token
+      ansible.builtin.uri:
+        url: https://srvpampvwadr.bcch.local/PasswordVault/API/auth/CyberArk/logon
+        method: POST
+        body_format: form_urlencoded
+          name: username
+          password: password
+          Content-Type= application/json
+          return_content: true
+      register: token

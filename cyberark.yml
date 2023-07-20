@@ -1,0 +1,29 @@
+---
+- name: Consulta contrasena cyberarck
+  host: localhost
+  
+tasks:
+  - name: Paso 1 Login
+    ansible.builtin.uri:
+      url: https://srvpampvwadr.bcch.local/PasswordVault/API/auth/CyberArk/logon
+      method: POST
+      body_format: form_urlencoded
+        name: username
+        password: password
+        Content-Type= application/json
+        return_content: true
+    register: token
+  
+  - name: Paso 1 Login
+    ansible.builtin.uri:
+      url: https://srvpampvwadr.bcch.local/PasswordVault/API/accounts
+      method: GET
+      body_format: form_urlencoded
+        search: username
+        searchtype: contains
+        limit= 5
+        Content-Type= application/json
+        Authorization= token.stdout 
+      return_content: true
+    register: cuentas.stdout
+ 

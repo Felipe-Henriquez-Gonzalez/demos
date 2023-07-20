@@ -6,7 +6,7 @@
       ansible.builtin.uri:
         url: https://srvpampvwadr.bcch.local/PasswordVault/API/auth/CyberArk/logon
         method: POST
-        body_format: form_urlencoded
+        body_format: form-urlencoded
         name: username
         password: password
         Content-Type: application/json

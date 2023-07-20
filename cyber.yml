@@ -12,3 +12,6 @@
         Content-Type: application/json
         return_content: true
       register: token
+    - name: mostrar token
+      debug:
+        msg: token.stdout

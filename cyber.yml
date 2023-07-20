@@ -9,6 +9,6 @@
         body_format: form_urlencoded
         name: username
         password: password
-        Content-Type= application/json
+        Content-Type: application/json
         return_content: true
       register: token

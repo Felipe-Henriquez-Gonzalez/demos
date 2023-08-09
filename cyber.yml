@@ -1,5 +1,5 @@
 ---
-- name: Obtener contenido de un archivo
+- name: Paso 1 conexion
   hosts: localhost
   tasks:
     - name: obtener token
@@ -7,12 +7,13 @@
         url: https://srvpampvwadr.bcch.local/PasswordVault/API/auth/CyberArk/logon
         method: POST
         body_format: form-urlencoded
-        Content-Type: application/json
+        hearders:
+          Content-Type: application/json
         return_content: true
         body:
           name: username
           password: password
-      register: token
+      register: _token
     - name: mostrar token
       debug:
-        msg: token.stdout
+        msg: token._stdout

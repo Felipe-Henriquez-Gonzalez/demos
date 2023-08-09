@@ -31,9 +31,8 @@
         url: "{{ PVWA }}/API/accounts?search=BUSQUEDA&amp;searchtype=contains&amp;limit=5"
         body_format: json
         body: 
-          username: "{{ CyberArk_User }}"
-          password: "{{ CyberArk_Password }}"
-      register: _cuentas
+          token: "{{ _token.content }}"
+        register: _cuentas
     - name: mostrar token
       debug:
         msg: "{{ _cuentas.content }}"

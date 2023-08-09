@@ -21,4 +21,4 @@
       register: _token
     - name: mostrar token
       debug:
-        msg: token._stdout
+        msg: el token es el siguiente "{{ token.stdout }}"

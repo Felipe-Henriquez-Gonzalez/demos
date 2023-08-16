@@ -5,7 +5,7 @@
 
   tasks:
   - name: Activate an AIX/Linux logical partition with user defined profile_name.
-    powervm_lpar_instance:
+    power_hmc.powervm_lpar_instance:
       hmc_host: '10.82.66.28'
       hmc_auth:
         username: 'hscroot'

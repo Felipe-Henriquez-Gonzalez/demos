@@ -1,4 +1,0 @@
----
-collections:
-  - name: ibm.power_hmc
-    source: https://console.redhat.com/api/automation-hub/

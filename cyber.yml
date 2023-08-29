@@ -21,18 +21,6 @@
       register: _token
     - name: mostrar token
       debug:
-        msg: "{{ _token.content }}"
-####
-#    - name: buscar cuentas 
-#      ansible.builtin.uri:
-#        method: GET
-#        validate_certs: no
-#        return_content: yes
-#        url: "{{ PVWA }}/API/accounts?search=BUSQUEDA&amp;searchtype=contains&amp;limit=5"
-#        body_format: json
-#        body: 
-#          token: "{{ _token.content }}"
-#        register: _cuentas
-#    - name: mostrar token
-#      debug:
-#        msg: "{{ _cuentas.content }}"
+        msg: "{{ _token.content | from_json }}"
+
+

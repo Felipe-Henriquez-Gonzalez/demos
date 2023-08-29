@@ -6,7 +6,7 @@
     cyberark_url: https://srvpampvwadr.bcch.local/PasswordVault
     CyberArk_User: "{{ CyberArk_User_var }}"
     CyberArk_Password: "{{ CyberArk_Password_var }}"
-  
+    cuentas_maquina: {{ nombre_server }} 
   tasks:
     - name: obtener token
       ansible.builtin.uri:
@@ -25,7 +25,7 @@
     
     - name: Busco cuentas disponibles en el Cyberark
       ansible.builtin.uri:
-        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/"
+        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/search={{ cuentas_maquina }}&searchtype=contains&limit=5"
         method: GET
         validate_certs: false
         return_content: true

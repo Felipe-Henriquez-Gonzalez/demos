@@ -36,5 +36,5 @@
 
     - name: Resultado cyberark_accounts 
       debug:
-        msg: "{{ cyberark_accounts |  to_yml }}"
+        msg: "{{ cyberark_accounts |  to_yaml }}"
 

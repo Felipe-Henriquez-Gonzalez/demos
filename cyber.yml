@@ -36,5 +36,5 @@
 
     - name: Resultado cyberark_accounts 
       debug:
-        msg: "{{ cyberark_accounts | json_query 'userName[?userName = `root`].id')}}"
+        msg: "{{ cyberark_accounts | json_query('value[?userName==''root''].id') }}"
 

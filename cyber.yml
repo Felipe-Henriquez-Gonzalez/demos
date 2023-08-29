@@ -36,5 +36,5 @@
 
     - name: Resultado cyberark_accounts 
       debug:
-        msg: "{{ cyberark_accounts | from_json }}"
+        msg: "{{ cyberark_accounts }}"
 

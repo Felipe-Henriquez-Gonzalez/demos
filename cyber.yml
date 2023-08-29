@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   vars:
-    PVWA: https://srvpampvwadr.bcch.local/PasswordVault
+    cyberark_url: https://srvpampvwadr.bcch.local/PasswordVault
     CyberArk_User: "{{ CyberArk_User_var }}"
     CyberArk_Password: "{{ CyberArk_Password_var }}"
   
@@ -13,7 +13,7 @@
         method: POST
         validate_certs: no
         return_content: yes
-        url: "{{ PVWA }}/API/auth/Cyberark/Logon"
+        url: "{{ cyberark_url}}/API/auth/Cyberark/Logon"
         body_format: json
         body: 
           username: "{{ CyberArk_User }}"

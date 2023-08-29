@@ -22,5 +22,18 @@
     - name: mostrar token
       debug:
         msg: "{{ _token.content | from_json }}"
+    
+    - name: Busco cuentas disponibles en el Cyberark
+      ansible.builtin.uri:
+        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/"
+        method: GET
+        validate_certs: false
+        return_content: true
+        headers:
+          Authorization: "{{ cyberark_login.content | from_json }}"
+      register: cyberark_accounts
 
+    - name: Resultado cyberark_accounts 
+      debug:
+        msg: "{{ cyberark_accounts }}"
 

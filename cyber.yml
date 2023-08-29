@@ -25,10 +25,11 @@
     
     - name: Busco cuentas disponibles en el Cyberark
       ansible.builtin.uri:
-        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/search={{ cuentas_maquina }}&searchtype=contains&limit=5"
         method: GET
-        validate_certs: false
-        return_content: true
+        validate_certs: no
+        return_content: yes
+        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/search={{ cuentas_maquina }}&searchtype=contains&limit=5"
+        body_format: json
         headers:
           Authorization: "{{ _token.content | from_json }}"
       register: cyberark_accounts

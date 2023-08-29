@@ -30,7 +30,7 @@
         validate_certs: false
         return_content: true
         headers:
-          Authorization: "{{ cyberark_login.content | from_json }}"
+          Authorization: "{{ _token.content | from_json }}"
       register: cyberark_accounts
 
     - name: Resultado cyberark_accounts 

@@ -36,5 +36,5 @@
 
     - name: Resultado cyberark_accounts 
       debug:
-        msg: "{{ cyberark_accounts }}"
+        msg: "{{ cyberark_accounts | items2dict(key_name='id', value_name='userName') }}"
 

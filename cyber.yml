@@ -43,13 +43,10 @@
         var: item
       loop: "{{ cyberark_accounts | community.general.json_query(server_user_ID) }}"
       vars:
-      server_name_cluster1_query: "value.userName[?userName=='root'].id"
+        server_name_cluster1_query: "value.userName[?userName=='root'].id"
       register: root_id
     
     - name: root id 
       debug:
         msg: "{{ root_id }}"
-
-      
-      msg: "{{ cyberark_accounts }}"
 

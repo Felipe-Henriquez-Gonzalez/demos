@@ -22,9 +22,9 @@
       register: _token
     
     
-    name: Obtener password
-    ansible.builtin.uri:
-        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/{{ cyberark_id }}/Password/Retrieve/"
+   - name: Obtener password de "{{ CyberAk_ID }}" del servidor {{ cuentas_maquina }}
+      ansible.builtin.uri:
+        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/{{ CyberAk_ID }}/Password/Retrieve/"
         method: POST
         body_format: form-urlencoded
         body:
@@ -33,5 +33,9 @@
         status_code: 200
         return_content: true
         headers:
-          Authorization: "{{ cyberark_login.content | from_json }}"
+          Authorization: "{{ _token | from_json }}"
       register: cyberark_pass
+    - name: Resultado cyberark_accounts 
+      debug:
+        msg: " La contraseña de la cuenta {{ CyberAk_ID }} es {{ cyberark_pass }}"
+      

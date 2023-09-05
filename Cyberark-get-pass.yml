@@ -9,7 +9,17 @@
     cuentas_maquina: "{{ nombre_server_var }}" 
     CyberArk_ID: "{{ CyberArk_Acount_ID]]"
   tasks:
-
+   - name: obtener token
+      ansible.builtin.uri:
+        method: POST
+        validate_certs: no
+        return_content: yes
+        url: "{{ cyberark_url}}/API/auth/Cyberark/Logon"
+        body_format: json
+        body: 
+          username: "{{ CyberArk_User }}"
+          password: "{{ CyberArk_Password }}"
+      register: _token
     
     
     name: Obtener password

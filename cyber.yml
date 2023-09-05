@@ -23,7 +23,7 @@
       debug:
         msg: "{{ _token.content | from_json }}"
     
-    - name: Busco cuentas disponibles en el Cyberark
+    - name: Busca cuentas en CyberArk
       ansible.builtin.uri:
         method: GET
         validate_certs: no
@@ -36,7 +36,7 @@
 
     - name: Resultado cyberark_accounts 
       debug:
-        msg: "{{ cyberark_accounts }}"
+        msg: "{{ cyberark_accounts | from_json }}"
 
 #    - name: Resultado cyberark_accounts filtrado por root #
 #      debug:

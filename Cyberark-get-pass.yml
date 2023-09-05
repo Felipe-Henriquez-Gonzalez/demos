@@ -1,0 +1,27 @@
+---
+- name: Paso 1 conexion
+  hosts: localhost
+  connection: local
+  vars:
+    cyberark_url: https://srvpampvwadr.bcch.local/PasswordVault
+    CyberArk_User: "{{ CyberArk_User_var }}"
+    CyberArk_Password: "{{ CyberArk_Password_var }}"
+    cuentas_maquina: "{{ nombre_server_var }}" 
+    CyberArk_ID: "{{ CyberArk_Acount_ID]]"
+  tasks:
+
+    
+    
+    name: Obtener password
+    ansible.builtin.uri:
+        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/{{ cyberark_id }}/Password/Retrieve/"
+        method: POST
+        body_format: form-urlencoded
+        body:
+          reason: "Update password desde AAP"
+        validate_certs: false
+        status_code: 200
+        return_content: true
+        headers:
+          Authorization: "{{ cyberark_login.content | from_json }}"
+      register: cyberark_pass

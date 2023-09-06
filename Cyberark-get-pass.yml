@@ -24,7 +24,7 @@
     
    - name: Obtener password 
      ansible.builtin.uri:
-       url: "{{ cyberark_url }}/PasswordVault/API/Accounts/{{ CyberArk_ID }}/Password/Retrieve/"
+       url: "{{ cyberark_url }}/API/Accounts/{{ CyberArk_ID }}/Password/Retrieve/"
        method: POST
        body_format: form-urlencoded
        body:

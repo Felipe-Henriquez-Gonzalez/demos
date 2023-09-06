@@ -36,7 +36,7 @@
 
     - name: Resultado cyberark_accounts 
       debug:
-        msg: "{{ cyberark_accounts }}"
+        msg: "{{ cyberark_accounts.content }}"
 
 #    - name: Resultado cyberark_accounts filtrado por root #
 #      debug:

@@ -37,5 +37,5 @@
      register: cyberark_pass
    - name: Resultado cyberark_accounts 
      debug:
-       msg: " La contraseña de la cuenta {{ CyberArk_ID }} es {{ cyberark_pass }}"
-      
+       msg: " La contraseña de la cuenta {{ CyberArk_ID }} es {{ cyberark_pass .content | from_json }}"
+     when: extra_debug | bool == True 

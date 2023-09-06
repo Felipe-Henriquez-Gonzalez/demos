@@ -10,32 +10,32 @@
     CyberArk_ID: "{{ CyberArk_Acount_ID]]"
   tasks:
    - name: obtener token
-      ansible.builtin.uri:
-        method: POST
-        validate_certs: no
-        return_content: yes
-        url: "{{ cyberark_url}}/API/auth/Cyberark/Logon"
-        body_format: json
-        body: 
-          username: "{{ CyberArk_User }}"
-          password: "{{ CyberArk_Password }}"
-      register: _token
+     ansible.builtin.uri:
+       method: POST
+       validate_certs: no
+       return_content: yes
+       url: "{{ cyberark_url}}/API/auth/Cyberark/Logon"
+       body_format: json
+       body: 
+         username: "{{ CyberArk_User }}"
+         password: "{{ CyberArk_Password }}"
+     register: _token
     
     
    - name: Obtener password de "{{ CyberAk_ID }}" del servidor {{ cuentas_maquina }}
-      ansible.builtin.uri:
-        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/{{ CyberAk_ID }}/Password/Retrieve/"
-        method: POST
-        body_format: form-urlencoded
-        body:
-          reason: "Update password desde AAP"
-        validate_certs: false
-        status_code: 200
-        return_content: true
-        headers:
-          Authorization: "{{ _token | from_json }}"
-      register: cyberark_pass
-    - name: Resultado cyberark_accounts 
-      debug:
-        msg: " La contraseña de la cuenta {{ CyberAk_ID }} es {{ cyberark_pass }}"
+     ansible.builtin.uri:
+       url: "{{ cyberark_url }}/PasswordVault/API/Accounts/{{ CyberAk_ID }}/Password/Retrieve/"
+       method: POST
+       body_format: form-urlencoded
+       body:
+         reason: "Update password desde AAP"
+       validate_certs: false
+       status_code: 200
+       return_content: true
+       headers:
+         Authorization: "{{ _token | from_json }}"
+     register: cyberark_pass
+   - name: Resultado cyberark_accounts 
+     debug:
+       msg: " La contraseña de la cuenta {{ CyberAk_ID }} es {{ cyberark_pass }}"
       

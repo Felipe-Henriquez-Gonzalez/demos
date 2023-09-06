@@ -7,7 +7,7 @@
     CyberArk_User: "{{ CyberArk_User_var }}"
     CyberArk_Password: "{{ CyberArk_Password_var }}"
     cuentas_maquina: "{{ nombre_server_var }}" 
-    CyberArk_ID: "{{ CyberArk_Acount_ID]]"
+    CyberArk_ID: "{{ CyberArk_Acount_ID}}"
   tasks:
    - name: obtener token
      ansible.builtin.uri:

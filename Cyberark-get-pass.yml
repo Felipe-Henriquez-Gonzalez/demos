@@ -22,7 +22,7 @@
      register: _token
     
     
-   - name: Obtener password de "{{ CyberArk_ID }}" del servidor {{ cuentas_maquina }}
+   - name: Obtener password 
      ansible.builtin.uri:
        url: "{{ cyberark_url }}/PasswordVault/API/Accounts/{{ CyberArk_ID }}/Password/Retrieve/"
        method: POST

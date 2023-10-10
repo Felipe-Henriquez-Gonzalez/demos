@@ -1,0 +1,26 @@
+---
+- name: Connect to Hitachi Ops Center
+  hosts: localhost 
+  gather_facts: no  
+
+  tasks:
+    - name: Authenticate with Hitachi Ops Center
+      uri:
+        url: "{{hitachiurl_var}}/api/login"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body_format: json
+        body:
+          username: "{{hitachi_user_var}}"
+          password: "{{hitachi_password_var}}"
+        validate_certs: no  
+      register: login_response
+
+    - name: chequeo de conexion
+      fail:
+        msg: "Authentication failed"
+      when: login_response.status != 200
+
+    #- name: Perform Hitachi Ops Center actions
+      # Add tasks here to interact with Hitachi Ops Center using appropriate Ansible modules or custom tasks

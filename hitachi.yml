@@ -6,7 +6,7 @@
   tasks:
     - name: Authenticate with Hitachi Ops Center
       uri:
-        url: "{{hitachiurl_var}}/api/login"
+        url: "{{hitachiurl_var}}/API/V1"
         method: POST
         headers:
           Content-Type: "application/json"

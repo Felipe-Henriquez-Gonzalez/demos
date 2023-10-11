@@ -11,9 +11,11 @@
         headers:
           Content-Type: "application/json"
         body_format: json
-        body:
+#        body:
+        data:
           username: "{{hitachi_user_var}}"
           password: "{{hitachi_password_var}}"
+          space: master
         validate_certs: no  
       register: login_response
 

@@ -6,7 +6,7 @@
   tasks:
     - name: Authenticate with Hitachi Ops Center
       uri:
-        url: "{{hitachiurl_var}}/API/V1"
+        url: "{{hitachiurl_var}}/API/7.1/master/UIController/services/Users/actions/login/invoke"
         method: POST
         headers:
           Content-Type: "application/json"
@@ -24,3 +24,4 @@
 
     #- name: Perform Hitachi Ops Center actions
       # Add tasks here to interact with Hitachi Ops Center using appropriate Ansible modules or custom tasks
+#curl --insecure --cookie-jar demosession --data "username=user&password=password&space=master" "https://demomaster/API/7.1/master/UIController/services/Users/actions/login/invoke" –silent

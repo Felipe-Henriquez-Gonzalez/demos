@@ -10,12 +10,9 @@
         method: POST
         headers:
           Content-Type: "application/json"
-        body_format: json
-#        body:
-        data:
-          username: "{{hitachi_user_var}}"
-          password: "{{hitachi_password_var}}"
-          space: master
+          Cookie: "demosession"
+        body_format: form-urlencoded
+        body: "username={{hitachi_user_var}}&password={{hitachi_password_var}}&space=master"
         validate_certs: no  
       register: login_response
 

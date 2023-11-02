@@ -6,8 +6,8 @@
   tasks:
     - name: Authenticate with Hitachi Ops Center
       uri:
-#        url: "{{hitachiurl_var}}/HDID/master/UIController/services/Users/actions/login/invoke"
-        url: "{{hitachiurl_var}}/ConfigurationManager/v1/objects/storages/####/sessions"
+        url: "{{hitachiurl_var}}/HDID/master/UIController/services/Users/actions/login/invoke"
+#        url: "{{hitachiurl_var}}/ConfigurationManager/v1/objects/storages/####/sessions"
         method: get
         validate_certs: no 
         return_content: yes 

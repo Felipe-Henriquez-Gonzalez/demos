@@ -17,7 +17,7 @@
 #        body_format: form-urlencoded
         user: "{{hitachi_user_var}}"
         password: "{{hitachi_password_var}}"
-        space: Master
+#       space: Master
         force_basic_auth: yes
         validate_certs: no  
       register: _login

@@ -7,20 +7,21 @@
     - name: Authenticate with Hitachi Ops Center
       uri:
         url: "{{hitachiurl_var}}/HDID/master/UIController/services/Users/actions/login/invoke"
-        method: POST
-        headers:
-          Content-Type: "application/json"
-          Cookie: "demosession"
-        body_format: form-urlencoded
-        body: "username={{hitachi_user_var}}&password={{hitachi_password_var}}&space=Master"
+#        url: "{{hitachiurl_var}}/ConfigurationManager/v1/objects/storages/####/sessions
+        method: get
+        validate_certs: no 
+        return_content: yes 
+#        headers:
+#          Content-Type: "application/json"
+#          Cookie: "demosession"
+#        body_format: form-urlencoded
+        user: {{hitachi_user_var}}
+        password: {{hitachi_password_var}}
+        space: Master"
+        force_bsic_auth: yes
         validate_certs: no  
-      register: login_response
+      register: _login
 
-    - name: chequeo de conexion
-      fail:
-        msg: "Authentication failed"
-      when: login_response.status != 200
-
-    #- name: Perform Hitachi Ops Center actions
-      # Add tasks here to interact with Hitachi Ops Center using appropriate Ansible modules or custom tasks
-#curl --insecure --cookie-jar demosession --data "username=user&password=password&space=master" "https://demomaster/API/7.1/master/UIController/services/Users/actions/login/invoke" –silent
+    - name: chequeo login
+      debug: 
+        msg: "{{_login}}"
